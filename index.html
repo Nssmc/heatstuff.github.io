@@ -1,1 +1,685 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <div style="background-color: #e6f2e6; color: #000000; border: 1px solid #87c289; padding: 10px;">
+        <h1>HEAT TRANSFER GARBAGE</h1>
+    </div>
+    
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: none;
+  text-align: right;
+  z-index: 1;
+  width: 100%;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.para{
+    min-width:125px;
+    display: inline-block;
+}
+.parar{
+    min-width:25px;
+    display: inline-block;
+}
+
+.placeholder{
+  display: inline-block;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #ffffff;
+  
+  text-align: center;
+  width: 35px;
+  height: 35px;
+}
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #87c289;
+  border-style: inset;
+  text-align: center;
+  max-width: 200px; /* Added 'px' unit */
+  min-width: 200px; /* Added 'px' unit */
+  font-size:1vw
+}
+.buttone {
+  display: inline-block;
+  margin: 0;
+  border: none;
+  border-radius: 2px;
+  background-color: #87c289;
+  border-style: inset;
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  font-size: 12px;
+  
+}
+.buttont {
+  display: inline-block;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #a4c0a5;
+  border-style: inset;
+  text-align: center;
+  max-width: 200px; /* Added 'px' unit */
+  min-width: 200px; /* Added 'px' unit */
+  font-size:1vw
+}
+.buttonis {
+  display: inline-block;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  
+  background-color: #87c289;
+  text-align: center;
+  max-width: 200px; /* Added 'px' unit */
+  min-width: 200px; /* Added 'px' unit */
+  font-size:1vw;
+}
+.buttonis:active {
+  background-color: #0c3d0e;
+  border-style: inset;
+}
+
+.button:hover {
+  background-color: #0c3d0e;
+}
+.buttone:hover {
+  background-color: #0c3d0e;
+}
+.buttonis:hover {
+  background-color: #0c3d0e;
+}
+.buttont:hover {
+  background-color: #87c289;
+}
+</style>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+
+</head>
+<body>
+<div style = "display: flex; overflow: auto; width: 1600px; height: 800px;margin-left: 40px; margin-top:60px">
+<div style = "display: inline-block; width: 2000px;">
+    <div style = "min-height:50.5px;">
+        <p class = "para">Heat load</p>
+        <button class = "buttone" onclick = "button(this)" value = "0" id = "HLcheck1">‮</button>
+        <input type="text" class="button" name="Blame" id = "HL1">
+        <div class="dropdown" value="0" id = "HL2">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1000" onclick="div(this)">MW</button>
+                <button class="buttont" value="1" onclick="div(this)">kW</button>
+                <button class="buttont" value="0.001" onclick="div(this)">W</button>
+                <button class="buttont" value="0.00029307103" onclick="div(this)">btu/H</button>
+                <button class="buttont" value="0.001163" onclick="div(this)">kcal/H</button>
+                <button class="buttont" value="0.7457" onclick="div(this)">hp</button>
+                <button class="buttont" value="3.516852842" onclick="div(this)">ton</button>
+            </div>
+        </div>
+    </div>
+    <p style="font-size: 40px;">HOT SIDE</p>
+    <div style = "min-height:50.5px;">
+        <p class = "para">Fluid List</p>
+        <button class = "placeholder"></button>
+        <div class="dropdown" value="0" id = "FL1_H">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "para">Flow rate</p>
+        <button class = "buttone" onclick = "button(this)" value = "0" id = "FRcheck1_H">‮</button>
+        <input type="text" class="button" id="FR1_H" name="Blame">
+        <div class="dropdown" value="0" id = "FR2_H">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="3600" onclick="div(this)">kg/h</button>
+                <button class="buttont" value="60" onclick="div(this)">kg/h</button>
+                <button class="buttont" value="1" onclick="div(this)">kg/s</button>
+                <button class="buttont" value="1632.9312" onclick="div(this)">lb/h</button>
+                <button class="buttont" value="27.21552" onclick="div(this)">lb/min</button>
+                <button class="buttont" value="0.453592" onclick="div(this)">lb/secs</button>
+                <button class="buttont" value="0.00405386" onclick="div(this)">slug/h</button>
+                <!--
+                <button class="buttont" value="1" onclick="div(this)">ft3/h</button>
+                <button class="buttont" value="1000" onclick="div(this)">ft3/min</button>
+                <button class="buttont" value="1000" onclick="div(this)">L/h</button>
+                <button class="buttont" value="1" onclick="div(this)">L/s</button>
+                <button class="buttont" value="1" onclick="div(this)">L/min</button>
+                <button class="buttont" value="1000" onclick="div(this)">m3/h</button>
+                <button class="buttont" value="1" onclick="div(this)">m3/s</button>
+                <button class="buttont" value="1000" onclick="div(this)">GPM</button>
+                <button class="buttont" value="1" onclick="div(this)">GPH</button>
+                <button class="buttont" value="1000" onclick="div(this)">mL/s</button>
+                -->
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "para">Input temperature</p>
+        <button class = "buttone" onclick = "button(this)" value = "0" id = "ITcheck1_H">‮</button>
+        <input type="text" class="button" id="IT1_H" name="Blame">
+        <div class="dropdown" value="[1,0]" id = "IT2_H">
+            <span class="button" id="span">--please select--</span>
+                <div class="dropdown-content">
+                    <!--array is coefficient intercept-->
+                    <button class="buttont" dvalue="[1,0]" onclick="dive(this)">C</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-32]" onclick="dive(this)">F</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-491.67]" onclick="dive(this)">R</button>
+                    <button class="buttont" dvalue="[1,-273.15]" onclick="dive(this)">K</button>
+                </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "para">Output temperature</p>
+        <button class = "buttone" onclick = "button(this)" value = "0" id = "OTcheck1_H">‮</button>
+        <input type="text" class="button" id="OT1_H" name="Blame">
+        <div class="dropdown" value="[1,0]" id = "OT2_H">
+            <span class="button" id="span">--please select--</span>
+                <div class="dropdown-content">
+                    <button class="buttont" dvalue="[1,0]" onclick="dive(this)">C</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-32]" onclick="dive(this)">F</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-491.67]" onclick="dive(this)">R</button>
+                    <button class="buttont" dvalue="[1,-273.15]" onclick="dive(this)">K</button>
+                </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "para" style = "margin-right:39px">Max Pressure Drop</p>
+        <input type="text" class="button" id="MPD1_H" name="Blame">
+        <div class="dropdown" value="0" id = "MPD2_H">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "para" style = "margin-right:39px">Operating Pressure</p>
+        <input type="text" class="button" id="OP1_H" name="Blame">
+        <div class="dropdown" value="0" id = "OP2_H">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "para" style = "margin-right:39px">Fouling Factor</p>
+        <input type="text" class="button" id="FF1_H" name="Blame">
+        <div class="dropdown" value="0" id = "FF2_H">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "para" style = "margin-right:39px">Design Pressure</p>
+        <input type="text" class="button" id="DP1_H" name="Blame">
+        <div class="dropdown" value="0" id = "DP2_H">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p class = "para" style = "margin-right: 39px;"></p>
+        
+        <button class = "buttonis" onclick = "submit()" style = "left: 78px;">submit form</button>
+    </div>
+
+</div>
+    
+    <div style = "display: inline-block; margin-top:0px; width:2000px;">
+        <p class = "parar" style = "margin-right: 39px;">Excess surface</p>
+        <input type="text" class="button" id="ES1" name="Blame">
+    <p style="font-size:40px">COLD SIDE</p>
+    <div style = "min-height:50.5px;">
+        <p class = "parar" style = "margin-right:39px;"></p>
+        <div class="dropdown" value="0" id = "FL1_C">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "parar"></p>
+        <button class = "buttone" onclick = "button(this)" value = "0" id = "FRcheck1_C">‮</button>
+        <input type="text" class="button" id="FR1_C" name="Blame">
+        <div class="dropdown" value="0" id = "FR2_C">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">kg/h</button>
+                <button class="buttont" value="1000" onclick="div(this)">kg/s</button>
+                <button class="buttont" value="1" onclick="div(this)">lb/h</button>
+                <button class="buttont" value="1000" onclick="div(this)">lb/min</button>
+                <button class="buttont" value="1" onclick="div(this)">kg/seconds</button>
+                <button class="buttont" value="1000" onclick="div(this)">slug/h</button>
+                <button class="buttont" value="1" onclick="div(this)">ft3/h</button>
+                <button class="buttont" value="1000" onclick="div(this)">ft3/min</button>
+                <button class="buttont" value="1" onclick="div(this)">L/min</button>
+                <button class="buttont" value="1000" onclick="div(this)">m3/h</button>
+                <button class="buttont" value="1" onclick="div(this)">m3/s</button>
+                <button class="buttont" value="1000" onclick="div(this)">GPM</button>
+                <button class="buttont" value="1" onclick="div(this)">GPH</button>
+                <button class="buttont" value="1000" onclick="div(this)">L/h</button>
+                <button class="buttont" value="1" onclick="div(this)">L/s</button>
+                <button class="buttont" value="1000" onclick="div(this)">mL/s</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "parar"></p>
+        <button class = "buttone" onclick = "button(this)" value = "0" id = "ITcheck1_C">‮</button>
+        <input type="text" class="button" id="IT1_C" name="Blame">
+        <div class="dropdown" value="[1,0]" id = "IT2_C">
+            <span class="button" id="span">--please select--</span>
+                <div class="dropdown-content">
+                    <button class="buttont" dvalue="[1,0]" onclick="dive(this)">C</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-32]" onclick="dive(this)">F</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-491.67]" onclick="dive(this)">R</button>
+                    <button class="buttont" dvalue="[1,-273.15]" onclick="dive(this)">K</button>
+                </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "parar"></p>
+        <button class = "buttone" onclick = "button(this)" value = "0" id = "OTcheck1_C">‮</button>
+        <input type="text" class="button" name="Blame" id = "OT1_C">
+        <div class="dropdown" value="[1,0]" id = "OT2_C">
+            <span class="button" id="span">--please select--</span>
+                <div class="dropdown-content">
+                    <button class="buttont" dvalue="[1,0]" onclick="dive(this)">C</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-32]" onclick="dive(this)">F</button>
+                    <button class="buttont" dvalue="[0.5555555555555,-491.67]" onclick="dive(this)">R</button>
+                    <button class="buttont" dvalue="[1,-273.15]" onclick="dive(this)">K</button>
+                </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "parar" style = "margin-right:39px"></p>
+        <input type="text" class="button" id="MPD1_C" name="Blame">
+        <div class="dropdown" value="0" id = "MPD2_C">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "parar" style = "margin-right:39px"></p>
+        <input type="text" class="button" id="OP1_C" name="Blame">
+        <div class="dropdown" value="0" id = "OP2_C">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "parar" style = "margin-right:39px"></p>
+        <input type="text" class="button" id="FF1_C" name="Blame">
+        <div class="dropdown" value="0" id = "FF2_C" >
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    <div style = "min-height:50.5px;">
+        <p class = "parar" style = "margin-right:39px"></p>
+        <input type="text" class="button" id="DP1_C" name="Blame">
+        <div class="dropdown" value="0" id = "DP2_C">
+        <span class="button" id="span">--please select--</span>
+            <div class="dropdown-content">
+                <button class="buttont" value="1" onclick="div(this)">option 1</button>
+                <button class="buttont" value="1" onclick="div(this)">option 2</button>
+                <button class="buttont" value="1" onclick="div(this)">option 3</button>
+            </div>
+        </div>
+    </div>
+    
+<div>
+    
+
+
+    
+</div>
+</div>
+</div>
+
+
+
+
+<script>
+    function sign(x){
+        return x/abs(x)
+    }
+    function abs(x){
+        return Math.abs(x)
+    }
+       
+    function submit(){
+        console.log(typeof(document.getElementById("HL2").value));
+        let HLcheck1 = Number(document.getElementById("HLcheck1").value);
+        let HL1 = Number(document.getElementById("HL1").value);
+        let HL2 = Number(document.getElementById("HL2").value);
+        let FL1_H = Number(document.getElementById("FL1_H").value);
+        let FRcheck1_H = Number(document.getElementById("FRcheck1_H").value);
+        //if (FRcheck1_H === 1){
+            let FR1_H = Number(document.getElementById("FR1_H").value);
+            let FR2_H = Number(document.getElementById("FR2_H").value);
+        //}
+        let ITcheck1_H = Number(document.getElementById("ITcheck1_H").value);
+        //if (ITcheck1_H === 1){
+            let IT1_H = Number(document.getElementById("IT1_H").value);
+            let IT2_H = JSON.parse(document.getElementById("IT2_H").value);
+        //}
+        let SHC1_H = 4.2;
+        let SHC1_C = 4.2;
+        let OTcheck1_H = Number(document.getElementById("OTcheck1_H").value);
+        //if (OTcheck1_H === 1){
+            let OT1_H = Number(document.getElementById("OT1_H").value);
+            let OT2_H = JSON.parse(document.getElementById("OT2_H").value);
+        //}
+        let MPD1_H = Number(document.getElementById("MPD1_H").value);
+        let MPD2_H = Number(document.getElementById("MPD2_H").value);
+        let OP1_H = Number(document.getElementById("OP1_H").value);
+        let OP2_H = Number(document.getElementById("OP2_H").value);
+        let FF1_H = Number(document.getElementById("FF1_H").value);
+        let FF2_H = Number(document.getElementById("FF2_H").value);
+        let DP1_H = Number(document.getElementById("DP1_H").value);
+        let DP2_H = Number(document.getElementById("DP2_H").value);
+        let FL1_C = Number(document.getElementById("FL1_C").value);
+        let FRcheck1_C = Number(document.getElementById("FRcheck1_C").value);
+        //if (FRcheck1_C === 1){
+            let FR1_C = Number(document.getElementById("FR1_C").value);
+            let FR2_C = Number(document.getElementById("FR2_C").value);
+        //}
+        let ITcheck1_C = Number(document.getElementById("ITcheck1_C").value);
+        //if (ITcheck1_C === 1){
+            let IT1_C = Number(document.getElementById("IT1_C").value);
+            let IT2_C = JSON.parse(document.getElementById("IT2_C").value);
+        //}
+        let OTcheck1_C = Number(document.getElementById("OTcheck1_C").value);
+        //if (OTcheck1_C === 1){
+            let OT1_C = Number(document.getElementById("OT1_C").value);
+            let OT2_C = JSON.parse(document.getElementById("OT2_C").value);
+        //}
+        let MPD1_C = Number(document.getElementById("MPD1_C").value);
+        let MPD2_C = Number(document.getElementById("MPD2_C").value);
+        let OP1_C = Number(document.getElementById("OP1_C").value);
+        let OP2_C = Number(document.getElementById("OP2_C").value);
+        let FF1_C = Number(document.getElementById("FF1_C").value);
+        let FF2_C = Number(document.getElementById("FF2_C").value);
+        let DP1_C = Number(document.getElementById("DP1_C").value);
+        let DP2_C = Number(document.getElementById("DP2_C").value);
+        let ES1 = Number(document.getElementById("ES1").value);
+        //ids only
+        let hlcheck1 = document.getElementById("HLcheck1");
+        let hl1 = document.getElementById("HL1");
+        let hl2 = document.getElementById("HL2");
+        let fl1_h = document.getElementById("FL1_H");
+        let frcheck1_h = document.getElementById("FRcheck1_H");
+        let fr1_h = document.getElementById("FR1_H");
+        let fr2_h = document.getElementById("FR2_H");
+        let itcheck1_h = document.getElementById("ITcheck1_H");
+        let it1_h = document.getElementById("IT1_H");
+        let it2_h = document.getElementById("IT2_H");
+        let shc1_h = 4.2;
+        let shc1_c = 4.2;
+        let otcheck1_h = document.getElementById("OTcheck1_H");
+        let ot1_h = document.getElementById("OT1_H");
+        let ot2_h = document.getElementById("OT2_H");
+        let mpd1_h = document.getElementById("MPD1_H");
+        let mpd2_h = document.getElementById("MPD2_H");
+        let op1_h = document.getElementById("OP1_H");
+        let op2_h = document.getElementById("OP2_H");
+        let ff1_h = document.getElementById("FF1_H");
+        let ff2_h = document.getElementById("FF2_H");
+        let dp1_h = document.getElementById("DP1_H");
+        let dp2_h = document.getElementById("DP2_H");
+        let fl1_c = document.getElementById("FL1_C");
+        let frcheck1_c = document.getElementById("FRcheck1_C");
+        let fr1_c = document.getElementById("FR1_C");
+        let fr2_c = document.getElementById("FR2_C");
+        let itcheck1_c = document.getElementById("ITcheck1_C");
+        let it1_c = document.getElementById("IT1_C");
+        let it2_c = document.getElementById("IT2_C");
+        let otcheck1_c = document.getElementById("OTcheck1_C");
+        let ot1_c = document.getElementById("OT1_C");
+        let ot2_c = document.getElementById("OT2_C");
+        let mpd1_c = document.getElementById("MPD1_C");
+        let mpd2_c = document.getElementById("MPD2_C");
+        let op1_c = document.getElementById("OP1_C");
+        let op2_c = document.getElementById("OP2_C");
+        let ff1_c = document.getElementById("FF1_C");
+        let ff2_c = document.getElementById("FF2_C");
+        let dp1_c = document.getElementById("DP1_C");
+        let dp2_c = document.getElementById("DP2_C");
+        let es1 = document.getElementById("ES1");
+        //fucking unit conversions
+        HL1 = HL1 * HL2
+        FR1_H = FR1_H * FR2_H
+        FR1_C = FR1_C * FR2_C
+        IT1_H = (IT1_H-IT2_H[1])*IT2_H[0]
+        OT1_H = (OT1_H-OT2_H[1])*OT2_H[0]
+        IT1_C = (IT1_C-IT2_C[1])*IT2_C[0]
+        OT1_C = (OT1_C-OT2_C[1])*OT2_C[0]
+        console.log("HLcheck1:", HLcheck1);
+        console.log("HL1:", HL1);
+        console.log("HL2:", HL2);
+        console.log("FL1_H:", FL1_H);
+        console.log("FRcheck1_H:", FRcheck1_H);
+        console.log("FR1_H:", FR1_H);
+        console.log("FR2_H:", FR2_H);
+        console.log("ITcheck1_H:", ITcheck1_H);
+        console.log("IT1_H:", IT1_H);
+        console.log("IT2_H:", IT2_H);
+        console.log("OTcheck1_H:", OTcheck1_H);
+        console.log("OT1_H:", OT1_H);
+        console.log("OT2_H:", OT2_H);
+        console.log("MPD1_H:", MPD1_H);
+        console.log("MPD2_H:", MPD2_H);
+        console.log("OP1_H:", OP1_H);
+        console.log("OP2_H:", OP2_H);
+        console.log("FF1_H:", FF1_H);
+        console.log("FF2_H:", FF2_H);
+        console.log("DP1_H:", DP1_H);
+        console.log("DP2_H:", DP2_H);
+        console.log("FL1_C:", FL1_C);
+        console.log("FRcheck1_C:", FRcheck1_C);
+        console.log("FR1_C:", FR1_C);
+        console.log("FR2_C:", FR2_C);
+        console.log("ITcheck1_C:", ITcheck1_C);
+        console.log("IT1_C:", IT1_C);
+        console.log("IT2_C:", IT2_C);
+        console.log("OTcheck1_C:", OTcheck1_C);
+        console.log("OT1_C:", OT1_C);
+        console.log("OT2_C:", OT2_C);
+        console.log("MPD1_C:", MPD1_C);
+        console.log("MPD2_C:", MPD2_C);
+        console.log("OP1_C:", OP1_C);
+        console.log("OP2_C:", OP2_C);
+        console.log("FF1_C:", FF1_C);
+        console.log("FF2_C:", FF2_C);
+        console.log("DP1_C:", DP1_C);
+        console.log("DP2_C:", DP2_C);
+        console.log("ES1:", ES1);
+        console.log(HLcheck1 + FRcheck1_C + FRcheck1_H + ITcheck1_H + OTcheck1_H + ITcheck1_C + OTcheck1_C);
+        
+        if (HLcheck1 + FRcheck1_C + FRcheck1_H + ITcheck1_H + OTcheck1_H + ITcheck1_C + OTcheck1_C != 5) {
+            window.alert("please input 5 variables");
+            return;
+        }
+        if (FRcheck1_C + ITcheck1_C + OTcheck1_C == 3||FRcheck1_H + ITcheck1_H + OTcheck1_H == 3){
+            window.alert("Please ensure you do not put 2 unknowns on either side");
+            return;
+        }
+        if (HLcheck1==0 && OTcheck1_H==0){
+            shit(hl1,FR1_C * (IT1_C - OT1_C) * SHC1_C);
+            shit(ot1_h , -(FR1_C * (IT1_C - OT1_C) * SHC1_C - FR1_H * IT1_H * SHC1_H) / FR1_H * SHC1_H);
+            return;
+        }
+        if (HLcheck1==0 && OTcheck1_C==0){
+            shit(hl1 , FR1_C * (IT1_C - OT1_C) * SHC1_C);
+            shit(ot1_c , -(FR1_C * (IT1_C - OT1_C) * SHC1_C - FR1_H * IT1_H * SHC1_H) / FR1_H * SHC1_H);
+            return;
+        }
+        if (HLcheck1==0 && ITcheck1_H==0){
+            shit(hl1 , FR1_C * (IT1_C - OT1_C) * SHC1_C);
+            shit(it1_h , FR1_C * (IT1_C - OT1_C) * SHC1_C + FR1_H * OT1_H * SHC1_H / FR1_H * SHC1_H);
+            return;
+        }
+        if (HLcheck1==0 && ITcheck1_C==0){
+            shit(hl1 , FR1_H * (IT1_H - OT1_H) * SHC1_H);
+            shit(it1_c , FR1_C * OT1_C * SHC1_C + FR1_H * (IT1_H - OT1_H) * SHC1_H / FR1_C * SHC1_C);
+            return;
+        }
+        if (HLcheck1==0 && FRcheck1_H==0){
+            shit(hl1 , FR1_C * (IT1_C - OT1_C) * SHC1_C);
+            shit(fr1_h , FR1_C * (IT1_C - OT1_C) * SHC1_C / (IT1_H - OT1_H) * SHC1_H);
+            return;
+        }
+        if (HLcheck1==0 && FRcheck1_C==0){
+            shit(hl1 , FR1_H * (IT1_H - OT1_H) * SHC1_H);
+            shit(fr1_c , FR1_H * (IT1_H - OT1_H) * SHC1_H / (IT1_C - OT1_C) * SHC1_C);
+            return;
+        }
+        if (FRcheck1_H==0 && FRcheck1_C==0){
+            shit(fr1_c , HL1 /(abs(IT1_C - OT1_C) * SHC1_C));
+            shit(fr1_h , HL1 /(abs(IT1_H - OT1_H) * SHC1_H));
+            return;
+        }
+        if (ITcheck1_H==0 && ITcheck1_C==0){
+            shit(it1_c , (FR1_C * OT1_C * SHC1_C + HL1) / FR1_C * SHC1_C);
+            shit(it1_h , (FR1_H * OT1_H * SHC1_H + HL1) / FR1_H * SHC1_H);
+            return;
+        }
+        if (OTcheck1_H==0 && OTcheck1_C==0){
+            shit(ot1_h , (FR1_H * IT1_H * SHC1_H - HL1) / FR1_H * SHC1_H);
+            shit(ot1_c , (FR1_C * IT1_C * SHC1_C - HL1) / FR1_C * SHC1_C);
+            return;
+        }
+        if (ITcheck1_H==0 && OTcheck1_C==0){
+            shit(it1_h , (FR1_H * OT1_H * SHC1_H + HL1) / FR1_H * SHC1_H);
+            shit(ot1_c , (FR1_C * IT1_C * SHC1_C - HL1) / FR1_C * SHC1_C);
+            return;
+        }
+        if (ITcheck1_C==0 && OTcheck1_H==0){
+            shit(it1_c , (FR1_C * OT1_C * SHC1_C + HL1) / FR1_C * SHC1_C);
+            shit(ot1_h , (FR1_H * IT1_H * SHC1_H - HL1) / FR1_H * SHC1_H);
+            return;
+        }
+        if (ITcheck1_C==0 && FRcheck1_H==0){
+            shit(it1_c , OT1_C - ((HL1) / (FR1_C * SHC1_C)));
+            shit(fr1_h , ((HL1) / (abs(IT1_H - OT1_H) * SHC1_H)));
+            return;
+        }
+        if (OTcheck1_C==0 && FRcheck1_H==0){
+            shit(fr1_h , ((HL1) / (abs(IT1_H - OT1_H) * SHC1_H)));
+            shit(ot1_c , ((HL1) / (FR1_C * SHC1_C)) + IT1_C);
+            return;
+        }
+        if (ITcheck1_H==0 && FRcheck1_C==0){
+            shit(fr1_c , ((sign(FR1_H * SHC1_H) * abs(((HL1) / (IT1_C - OT1_C)))) / (SHC1_C)));
+            shit(it1_h , OT1_H - ((HL1) / (FR1_H * SHC1_H)));
+            return;
+        }
+        if (OTcheck1_H==0 && FRcheck1_C==0){
+            shit(fr1_c , ((sign(FR1_H * SHC1_H) * abs(((HL1) / (IT1_C - OT1_C)))) / (SHC1_C)));
+            shit(ot1_h , IT1_H - ((HL1) / (FR1_H * SHC1_H)));
+            return;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    function shit(element,value) {
+        element.value = abs(value);
+    }
+
+    function div(element) {
+        inner = element.innerHTML;
+        val = element.value;
+        
+        
+        S = element.parentNode.parentNode.querySelector("span");
+        S.parentNode.value = val;
+        S.innerHTML = inner;
+    }
+    function dive(element) {
+        inner = element.innerHTML;
+        val = element.getAttribute('dvalue');
+        
+        
+        S = element.parentNode.parentNode.querySelector("span");
+        S.parentNode.value = val;
+        S.innerHTML = inner;
+    }
+    function button(element) {
+        if (element.innerHTML === "✓") {
+        element.innerHTML = "‮";
+        element.value = 0;
+        } else {
+        element.innerHTML = "✓";
+        element.value = 1;
+        
+        }
+   };
+    
+</script>
+
+</body>
+</html>
