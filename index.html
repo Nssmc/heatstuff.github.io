@@ -126,6 +126,7 @@
 
     <!-- (Optional) Latest compiled and minified JavaScript translation files -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
    
     
@@ -153,11 +154,18 @@
 </head>
 <body>
  
-  <div style="background-color:#87c289; width:100vw; border: 1px; padding: 10px; height: 80px; display: flex; position: relative;">
-    <h1>Fluid properties: Page 1</h1>
-    
-    
-  </div>
+  <nav class="navbar navbar-default" style = "color:#87c289">
+    <div class="container-fluid" style = "margin-left:-15px">
+      <div class="navbar-header">
+         <img style = "width:100px;height:50px;" class="d-inline-block align-top" src="./lnkorr.png" alt="freck">
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="./what the fork.html">Fluid Properties</a></li>
+        <li><a href="./inkorr project 22.html">Heat Balance</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+    </div>
+  </nav>
   <div class = single_phase_liquid><b>Cold side Liquid</b></div>
   <div class = fmat3 style=>
     <p class = fluidstate style = "margin-right:195px">Fluid Name</p>
@@ -315,6 +323,7 @@
   </select>
  
 </p>
+
 </p>
 <hr width = 100% size="10">
 <div class = single_phase_liquid2><b>Hot side Liquid</b></div>
@@ -472,128 +481,140 @@
   </div>
 
 
- 
-<div class = box>
-  <h4 class = PrDetails>Cold side property details</h4>
-    <div class = "boxtext"><p style = "font-size: 20px;">Point Number</p></div>
-    <div class = "boxtext"><p style = "font-size: 20px;">Temperature</p></div>
-    <div class = "boxtext"><p style = "font-size: 20px;">Density</p></div>
-    <div class = "boxtext"><p style = "font-size: 20px;">Specific Heat</p></div>
-    <div class = "boxtext"><p style = "font-size: 20px;">Conductivity</p></div>
-    <div class = "boxtext"><p style = "font-size: 20px;">Dynamic Viscosity</p></div>
-  <div class = boxwhite>
-    <div class="spacerw">
-        <p>1</p>
-    </div>
-    <input class="spacerg" type="text" id="T1" name="Blame">
-    <input class="spacerw" type="text" id="D1" name="Blame">
-    <input class="spacerg" type="text" id="SHC1" name="Blame">
-    <input class="spacerw" type="text" id="TC1" name="Blame">
-    <input class="spacerg" type="text" id="DV1" name="Blame">
+<div style = "display:flex">
+  <div class = box>
+    <h4 class = PrDetails>Cold side property details</h4>
+      <div class = "boxtext"><p style = "font-size: 15px;">Point Number</p></div>
+      <div class = "boxtext"><p style = "font-size: 15px;">Temperature</p></div>
+      <div class = "boxtext"><p style = "font-size: 15px;">Density</p></div>
+      <div class = "boxtext"><p style = "font-size: 15px;">Specific Heat</p></div>
+      <div class = "boxtext"><p style = "font-size: 15px;">Conductivity</p></div>
+      <div class = "boxtext"><p style = "font-size: 15px;">Dynamic Viscosity</p></div>
+    <div class = boxwhite>
+      <div class="spacerw">
+          <p>1</p>
+      </div>
+      <input class="spacerg" type="text" id="T1" name="Blame">
+      <input class="spacerw" type="text" id="D1" name="Blame">
+      <input class="spacerg" type="text" id="SHC1" name="Blame">
+      <input class="spacerw" type="text" id="TC1" name="Blame">
+      <input class="spacerg" type="text" id="DV1" name="Blame">
 
-  </div>
-  <div class = boxwhite>
-    
-    <div class="spacerg">
-        <p>2</p>
     </div>
-    <input class="spacerw" type="text" id="T2" name="Blame">
-    <input class="spacerg" type="text" id="D2" name="Blame">
-    <input class="spacerw" type="text" id="SHC2" name="Blame">
-    <input class="spacerg" type="text" id="TC2" name="Blame">
-    <input class="spacerw" type="text" id="DV2" name="Blame">
-  </div>
-  <div class = boxwhite>
-    <div class="spacerw">
-        <p>3</p>
+    <div class = boxwhite>
+      
+      <div class="spacerg">
+          <p>2</p>
+      </div>
+      <input class="spacerw" type="text" id="T2" name="Blame">
+      <input class="spacerg" type="text" id="D2" name="Blame">
+      <input class="spacerw" type="text" id="SHC2" name="Blame">
+      <input class="spacerg" type="text" id="TC2" name="Blame">
+      <input class="spacerw" type="text" id="DV2" name="Blame">
     </div>
-    <input class="spacerg" type="text" id="T3" name="Blame">
-    <input class="spacerw" type="text" id="D3" name="Blame">
-    <input class="spacerg" type="text" id="SHC3" name="Blame">
-    <input class="spacerw" type="text" id="TC3" name="Blame">
-    <input class="spacerg" type="text" id="DV3" name="Blame">
-  </div>
-  <div class = boxwhite>
-    
-    <div class="spacerg">
-        <p>4</p>
+    <div class = boxwhite>
+      <div class="spacerw">
+          <p>3</p>
+      </div>
+      <input class="spacerg" type="text" id="T3" name="Blame">
+      <input class="spacerw" type="text" id="D3" name="Blame">
+      <input class="spacerg" type="text" id="SHC3" name="Blame">
+      <input class="spacerw" type="text" id="TC3" name="Blame">
+      <input class="spacerg" type="text" id="DV3" name="Blame">
+      
     </div>
-    <input class="spacerw" type="text" id="T4" name="Blame">
-    <input class="spacerg" type="text" id="D4" name="Blame">
-    <input class="spacerw" type="text" id="SHC4" name="Blame">
-    <input class="spacerg" type="text" id="TC4" name="Blame">
-    <input class="spacerw" type="text" id="DV4" name="Blame">
-  </div>
-  <div class = boxwhite>
-    <div class="spacerw">
-        <p>5</p>
+    <div class = boxwhite>
+      
+      <div class="spacerg">
+          <p>4</p>
+      </div>
+      <input class="spacerw" type="text" id="T4" name="Blame">
+      <input class="spacerg" type="text" id="D4" name="Blame">
+      <input class="spacerw" type="text" id="SHC4" name="Blame">
+      <input class="spacerg" type="text" id="TC4" name="Blame">
+      <input class="spacerw" type="text" id="DV4" name="Blame">
     </div>
-    <input class="spacerg" type="text" id="T5" name="Blame">
-    <input class="spacerw" type="text" id="D5" name="Blame">
-    <input class="spacerg" type="text" id="SHC5" name="Blame">
-    <input class="spacerw" type="text" id="TC5" name="Blame">
-    <input class="spacerg" type="text" id="DV5" name="Blame">
-  </div>
-  <hr width = 100% size="10">
-  <h4 class = PrDetails2>Hot side property details</h4>
-  <div class = boxwhite>
-    <div class="spacerw">
-        <p>1</p>
+    <div class = boxwhite>
+      <div class="spacerw">
+          <p>5</p>
+      </div>
+      <input class="spacerg" type="text" id="T5" name="Blame">
+      <input class="spacerw" type="text" id="D5" name="Blame">
+      <input class="spacerg" type="text" id="SHC5" name="Blame">
+      <input class="spacerw" type="text" id="TC5" name="Blame">
+      <input class="spacerg" type="text" id="DV5" name="Blame">
     </div>
-    <input class="spacerg" type="text" id="T12" name="Blame">
-    <input class="spacerw" type="text" id="D12" name="Blame">
-    <input class="spacerg" type="text" id="SHC12" name="Blame">
-    <input class="spacerw" type="text" id="TC12" name="Blame">
-    <input class="spacerg" type="text" id="DV12" name="Blame">
+    <hr width = 100% size="10">
+    <h4 class = PrDetails2>Hot side property details</h4>
+    <div class = boxwhite>
+      <div class="spacerw">
+          <p>1</p>
+      </div>
+      <input class="spacerg" type="text" id="T12" name="Blame">
+      <input class="spacerw" type="text" id="D12" name="Blame">
+      <input class="spacerg" type="text" id="SHC12" name="Blame">
+      <input class="spacerw" type="text" id="TC12" name="Blame">
+      <input class="spacerg" type="text" id="DV12" name="Blame">
 
-  </div>
-  <div class = boxwhite>
-    
-    <div class="spacerg">
-        <p>2</p>
     </div>
-    <input class="spacerw" type="text" id="T22" name="Blame">
-    <input class="spacerg" type="text" id="D22" name="Blame">
-    <input class="spacerw" type="text" id="SHC22" name="Blame">
-    <input class="spacerg" type="text" id="TC22" name="Blame">
-    <input class="spacerw" type="text" id="DV22" name="Blame">
-  </div>
-  <div class = boxwhite>
-    <div class="spacerw">
-        <p>3</p>
+    <div class = boxwhite>
+      
+      <div class="spacerg">
+          <p>2</p>
+      </div>
+      <input class="spacerw" type="text" id="T22" name="Blame">
+      <input class="spacerg" type="text" id="D22" name="Blame">
+      <input class="spacerw" type="text" id="SHC22" name="Blame">
+      <input class="spacerg" type="text" id="TC22" name="Blame">
+      <input class="spacerw" type="text" id="DV22" name="Blame">
     </div>
-    <input class="spacerg" type="text" id="T32" name="Blame">
-    <input class="spacerw" type="text" id="D32" name="Blame">
-    <input class="spacerg" type="text" id="SHC32" name="Blame">
-    <input class="spacerw" type="text" id="TC32" name="Blame">
-    <input class="spacerg" type="text" id="DV32" name="Blame">
-  </div>
-  <div class = boxwhite>
-    
-    <div class="spacerg">
-        <p>4</p>
+    <div class = boxwhite>
+      <div class="spacerw">
+          <p>3</p>
+      </div>
+      <input class="spacerg" type="text" id="T32" name="Blame">
+      <input class="spacerw" type="text" id="D32" name="Blame">
+      <input class="spacerg" type="text" id="SHC32" name="Blame">
+      <input class="spacerw" type="text" id="TC32" name="Blame">
+      <input class="spacerg" type="text" id="DV32" name="Blame">
     </div>
-    <input class="spacerw" type="text" id="T42" name="Blame">
-    <input class="spacerg" type="text" id="D42" name="Blame">
-    <input class="spacerw" type="text" id="SHC42" name="Blame">
-    <input class="spacerg" type="text" id="TC42" name="Blame">
-    <input class="spacerw" type="text" id="DV42" name="Blame">
-  </div>
-  <div class = boxwhite>
-    <div class="spacerw">
-        <p>5</p>
+    <div class = boxwhite>
+      
+      <div class="spacerg">
+          <p>4</p>
+      </div>
+      <input class="spacerw" type="text" id="T42" name="Blame">
+      <input class="spacerg" type="text" id="D42" name="Blame">
+      <input class="spacerw" type="text" id="SHC42" name="Blame">
+      <input class="spacerg" type="text" id="TC42" name="Blame">
+      <input class="spacerw" type="text" id="DV42" name="Blame">
     </div>
-    <input class="spacerg" type="text" id="T52" name="Blame">
-    <input class="spacerw" type="text" id="D52" name="Blame">
-    <input class="spacerg" type="text" id="SHC52" name="Blame">
-    <input class="spacerw" type="text" id="TC52" name="Blame">
-    <input class="spacerg" type="text" id="DV52" name="Blame">
+    <div class = boxwhite>
+      <div class="spacerw">
+          <p>5</p>
+      </div>
+      <input class="spacerg" type="text" id="T52" name="Blame">
+      <input class="spacerw" type="text" id="D52" name="Blame">
+      <input class="spacerg" type="text" id="SHC52" name="Blame">
+      <input class="spacerw" type="text" id="TC52" name="Blame">
+      <input class="spacerg" type="text" id="DV52" name="Blame">
+    </div>
+    <hr width = 100% size="10">
   </div>
+  <div>
+    <canvas id="myChart" width="200" height="200" style="border:1px solid #d3d3d3;margin-top:20px">
+      Your browser does not support the HTML canvas tag.
+    </canvas>
+    <canvas id="myChart2" width="200" height="200" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML canvas tag.
+    </canvas>
+  </div>
+
 </div>
-<hr width = 100% size="10">
-<button onclick = "generaterange()" class = "button">generate range</button>
+
+<button onclick = "generaterange()" class = "button" style = "margin-left:20px;">generate range</button>
 <button id = "props" onclick = "load()" class = "button">Retrieve Properties</button>
-<button onclick = "passkeys()" class = "button">Next page</button>
+
 
 
 
@@ -609,22 +630,22 @@
  
 <style>
   .spacerw{
-    width:176px;
+    width:150px;
     background-color: #87c289;
-    height: 30px;
+    height: 25px;
     border: none;
     border-width: 2px grey;
     border-style: inset; 
-    border-radius: 6px;
+    
   }
   .spacerg{
-    width:176px;
-    background-color: #81df84;
-    height: 30px;
+    width:150px;
+    background-color: #87c289;
+    height: 25px;
     border: none;
     border-width: 2px grey;
     border-style: inset; 
-    border-radius: 6px;
+    
   }
   .top{
     background-color: rgb(13, 180, 138);
@@ -736,7 +757,7 @@
 }
 .box{
   width: 1094px;
-  height: 470px;
+  height: 400px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
@@ -766,7 +787,7 @@
 }
 .boxtext{
   display:inline-block;
-  width:176px;
+  width:150px;
 }
 
 </style>
@@ -774,6 +795,10 @@
 
    
 <script>
+    let SHCeq1 = 0;
+    let Deq1 = 0;
+    let SHCeq2 = 0;
+    let Deq2 = 0;
     let alternator = 0
     function lerp(a,b,r){
         return a * (1 - r)+b*r  
@@ -845,10 +870,10 @@
         dy2.push(Number(document.getElementById("D42").value));
         dy2.push(Number(document.getElementById("D52").value));
         //linear regression time
-        let SHCeq1 = linearRegression(x1,shcy1);
-        let Deq1 = linearRegression(x1,dy1);
-        let SHCeq2 = linearRegression(x1,shcy2);
-        let Deq2 = linearRegression(x1,dy2);
+        SHCeq1 = linearRegression(x1,shcy1);
+        Deq1 = linearRegression(x1,dy1);
+        SHCeq2 = linearRegression(x1,shcy2);
+        Deq2 = linearRegression(x1,dy2);
         
         sessionStorage.setItem("SHCeq1",JSON.stringify(SHCeq1));
         sessionStorage.setItem("Deq1",JSON.stringify(Deq1));
@@ -858,7 +883,7 @@
         console.log(JSON.parse(sessionStorage.getItem("Deq1")))
         console.log(JSON.parse(sessionStorage.getItem("SHCeq2")))
         console.log(JSON.parse(sessionStorage.getItem("Deq2")))
-        location.href='./inkorr project 22.html'
+        
      } 
      function linearRegression(x,y){
         var lr = {};
@@ -1004,7 +1029,80 @@
             
             
         `)
-        
+        passkeys()
+        const lineData = [
+          {x:Number(document.getElementById("T1").value), y:Number(document.getElementById("T1").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T2").value), y:Number(document.getElementById("T2").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T3").value), y:Number(document.getElementById("T3").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T4").value), y:Number(document.getElementById("T4").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T5").value), y:Number(document.getElementById("T5").value)*SHCeq1.slope+SHCeq1.intercept},
+          
+        ];
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+
+        const xyValues = [
+          {x:document.getElementById("T1").value, y:document.getElementById("SHC1").value},
+          {x:document.getElementById("T2").value, y:document.getElementById("SHC2").value},
+          {x:document.getElementById("T3").value, y:document.getElementById("SHC3").value},
+          {x:document.getElementById("T4").value, y:document.getElementById("SHC4").value},
+          {x:document.getElementById("T5").value, y:document.getElementById("SHC5").value},
+        ];
+
+        new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    { label: 'SHC values', data: xyValues, backgroundColor: 'rgba(255, 99, 132, 1)' },
+                    { label: 'approximate trend', data: lineData, type: 'line', borderColor: 'rgba(54, 162, 235, 1)', fill: false }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { type: 'linear', position: 'bottom' },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+        const lineData2 = [
+          {x:Number(document.getElementById("T1").value), y:Number(document.getElementById("T1").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T2").value), y:Number(document.getElementById("T2").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T3").value), y:Number(document.getElementById("T3").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T4").value), y:Number(document.getElementById("T4").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T5").value), y:Number(document.getElementById("T5").value)*SHCeq2.slope+SHCeq2.intercept},
+          
+        ];
+
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+
+
+        const xyValues2 = [
+          {x:document.getElementById("T1").value, y:document.getElementById("SHC12").value},
+          {x:document.getElementById("T2").value, y:document.getElementById("SHC22").value},
+          {x:document.getElementById("T3").value, y:document.getElementById("SHC32").value},
+          {x:document.getElementById("T4").value, y:document.getElementById("SHC42").value},
+          {x:document.getElementById("T5").value, y:document.getElementById("SHC52").value},
+        ];
+
+        new Chart(ctx2, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    { label: 'SHC values', data: xyValues2, backgroundColor: 'rgba(255, 99, 132, 1)' },
+                    { label: 'Approximate Trend', data: lineData2, type: 'line', borderColor: 'rgba(54, 162, 235, 1)', fill: false }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { type: 'linear', position: 'bottom' },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
 
     }
     
