@@ -7,8 +7,9 @@
 					<img style = "width:100px;height:50px;" class="d-inline-block align-top" src="./lnkorr.png" alt="freck">
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="./index.html">Fluid Properties</a></li>
+					<li><a href="./what the fork.html">Fluid Properties</a></li>
 					<li><a href="./inkorr project 22.html">Heat Balance</a></li>
+					<li><a href="#">Page 3</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -458,7 +459,7 @@
 			    let hlcheck1 = document.getElementById("HLcheck1");
 			    let hl1 = document.getElementById("HL1");
 			    let hl2 = document.getElementById("HL2");
-			    
+			    let fl1_h = document.getElementById("FL1_H");
 			    let frcheck1_h = document.getElementById("FRcheck1_H");
 			    let fr1_h = document.getElementById("FR1_H");
 			    
@@ -481,7 +482,7 @@
 			    let ff2_h = document.getElementById("FF2_H");
 			    let dp1_h = document.getElementById("DP1_H");
 			    let dp2_h = document.getElementById("DP2_H");
-			    
+			    let fl1_c = document.getElementById("FL1_C");
 			    let frcheck1_c = document.getElementById("FRcheck1_C");
 			    let fr1_c = document.getElementById("FR1_C");
 			    let fr2_c = document.getElementById("FR2_C");
@@ -520,7 +521,7 @@
 			    console.log("HLcheck1:", HLcheck1);
 			    console.log("HL1:", HL1);
 			    console.log("HL2:", HL2);
-			    //console.log("FL1_H:", FL1_H);
+			    console.log("FL1_H:", FL1_H);
 			    console.log("SHC1_H:",SHC1_H)
 			    console.log("SHC1_C:",SHC1_C)
 			    console.log("FRcheck1_H:", FRcheck1_H);
@@ -540,7 +541,7 @@
 			    console.log("FF2_H:", FF2_H);
 			    console.log("DP1_H:", DP1_H);
 			    console.log("DP2_H:", DP2_H);
-			    //console.log("FL1_C:", FL1_C);
+			    console.log("FL1_C:", FL1_C);
 			    console.log("FRcheck1_C:", FRcheck1_C);
 			    console.log("FR1_C:", FR1_C);
 			    console.log("FR2_C:", FR2_C);
@@ -571,80 +572,90 @@
 			        window.alert("Please ensure you do not put 2 unknowns on either side");
 			        return;
 			    }
+				//marker
+				//I am gonna pull my fucking hair out actually not I am going to pull my damn brain out at this point\
+				//the CAS helps 
 			    if (HLcheck1==0 && OTcheck1_H==0){
-			        shit(hl1,FR1_C * abs(IT1_C - OT1_C) * SHC1_C);
-			        shit(ot1_h , -(((FR1_C*(IT1_C-OT1_C)-FR1_H*IT1_H))/(FR1_H)));
+			        shit(hl1,FR1_C * -FR1_C * (IT1_C - OT1_C) * SHC1_C);
+			        shit(ot1_h , ((FR1_C * (IT1_C - OT1_C) * SHC1_C + FR1_H * IT1_H * SHC1_H) / (FR1_H * SHC1_H)));
 			        return;
 			    }
+			
 			    if (HLcheck1==0 && OTcheck1_C==0){
-			        shit(hl1 , FR1_H * abs(IT1_H - OT1_H) * SHC1_H);
-			        shit(ot1_c , ((FR1_C*IT1_C-FR1_H*(IT1_H-OT1_H))/(FR1_C)));
+			        shit(hl1 , FR1_H*(IT1_H-OT1_H)*SHC1_H);
+			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+FR1_H*(IT1_H-OT1_H)*SHC1_H)/(FR1_C*SHC1_C)));
 			        return;
 			    }
+				
 			    if (HLcheck1==0 && ITcheck1_H==0){
-			        shit(hl1 , FR1_C * (IT1_C - OT1_C) * SHC1_C);
-			        shit(it1_h , ((FR1_C*(IT1_C-OT1_C)+FR1_H*OT1_H)/(FR1_H)));
+			        shit(hl1 , -(FR1_C*(IT1_C-OT1_C)*SHC1_C));
+			        shit(it1_h , ((-(FR1_C*(IT1_C-OT1_C)*SHC1_C-FR1_H*OT1_H*SHC1_H))/(FR1_H*SHC1_H)));
 			        return;
 			    }
+				//marker
 			    if (HLcheck1==0 && ITcheck1_C==0){
-			        shit(hl1 , FR1_H * (IT1_H - OT1_H) * SHC1_H);
-			        shit(it1_c , ((FR1_C*OT1_C+FR1_H*(IT1_H-OT1_H))/(FR1_C)));
+			        shit(hl1 , FR1_H*(IT1_H-OT1_H)*SHC1_H);
+			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-FR1_H*(IT1_H-OT1_H)*SHC1_H)/(FR1_C*SHC1_C)));
 			        return;
 			    }
+				//
 			    if (HLcheck1==0 && FRcheck1_H==0){
-			        shit(hl1 , FR1_C * (IT1_C - OT1_C) * SHC1_C);
-			        shit(fr1_h , FR1_C * (IT1_C - OT1_C) * SHC1_C / (IT1_H - OT1_H) * SHC1_H);
-			        
+			        shit(hl1 , -FR1_C*(IT1_C-OT1_C)*SHC1_C);
+			        shit(fr1_h , -FR1_C * (IT1_C - OT1_C) * SHC1_C / (IT1_H - OT1_H) * SHC1_H);
+					//        ((−FR1_C*(IT1_C-OT1_C)*SHC1_C)/((IT1_H-OT1_H)*SHC1_H))
 			        return;
 			    }
+				//
 			    if (HLcheck1==0 && FRcheck1_C==0){
 			        shit(hl1 , FR1_H * (IT1_H - OT1_H) * SHC1_H);
 			        shit(fr1_c , FR1_H * (IT1_H - OT1_H) * SHC1_H / (IT1_C - OT1_C) * SHC1_C);
 			        return;
 			    }
+				//
 			    if (FRcheck1_H==0 && FRcheck1_C==0){
-			        shit(fr1_c , HL1 /(abs(IT1_C - OT1_C) * SHC1_C));
+					//((−HL1)/((IT1_C-OT1_C)*SHC1_C)) 
+			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
 			        shit(fr1_h , HL1 /(abs(IT1_H - OT1_H) * SHC1_H));
 			        return;
 			    }
 			    if (ITcheck1_H==0 && ITcheck1_C==0){
-			        shit(it1_c , (FR1_C * OT1_C * SHC1_C + HL1) / FR1_C * SHC1_C);
-			        shit(it1_h , (FR1_H * OT1_H * SHC1_H + HL1) / FR1_H * SHC1_H);
+			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-HL1)/(FR1_C*SHC1_C)));
+			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
 			        return;
 			    }
 			    if (OTcheck1_H==0 && OTcheck1_C==0){
-			        shit(ot1_h , (FR1_H * IT1_H * SHC1_H - HL1) / FR1_H * SHC1_H);
-			        shit(ot1_c , (FR1_C * IT1_C * SHC1_C - HL1) / FR1_C * SHC1_C);
+			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
+			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
 			        return;
 			    }
 			    if (ITcheck1_H==0 && OTcheck1_C==0){
-			        shit(it1_h , (FR1_H * OT1_H * SHC1_H + HL1) / FR1_H * SHC1_H);
-			        shit(ot1_c , (FR1_C * IT1_C * SHC1_C - HL1) / FR1_C * SHC1_C);
+			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
+			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
 			        return;
 			    }
 			    if (ITcheck1_C==0 && OTcheck1_H==0){
-			        shit(it1_c , (FR1_C * OT1_C * SHC1_C + HL1) / FR1_C * SHC1_C);
-			        shit(ot1_h , (FR1_H * IT1_H * SHC1_H - HL1) / FR1_H * SHC1_H);
+			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-HL1)/(FR1_C*SHC1_C)));
+			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
 			        return;
 			    }
 			    if (ITcheck1_C==0 && FRcheck1_H==0){
 			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
-			        shit(fr1_h , ((HL1) / ((IT1_H - OT1_H) * SHC1_H)));
+			        shit(fr1_h , ((HL1)/((IT1_H-OT1_H)*SHC1_H)));
 			        return;
 			    }
 			    if (OTcheck1_C==0 && FRcheck1_H==0){
-			        shit(fr1_h , ((HL1) / (abs(IT1_H - OT1_H) * SHC1_H)));
-			        shit(ot1_c , OT1_C=((FR1_C*IT1_C*SHC1_C-HL1)/(FR1_C*SHC1_C)));
+			        shit(fr1_h , ((HL1)/((IT1_H-OT1_H)*SHC1_H)));
+			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
 			        return;
 			    }
 			    if (ITcheck1_H==0 && FRcheck1_C==0){
-			        shit(fr1_c , ((HL1) / ((IT1_C - OT1_C) * SHC1_C)));
+			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
 			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
 			        return;
 			    }
 			    if (OTcheck1_H==0 && FRcheck1_C==0){
-			        shit(fr1_c , ((sign(FR1_H * SHC1_H) * abs(((HL1) / (IT1_C - OT1_C)))) / (SHC1_C)));
-			        shit(ot1_h , IT1_H - ((HL1) / (FR1_H * SHC1_H)));
+			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
+			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
 			        return;
 			    }
 			    hl1.value = HL1 * HL2
