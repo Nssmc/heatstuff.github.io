@@ -9,7 +9,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="./index.html">Fluid Properties</a></li>
 					<li><a href="./inkorr project 22.html">Heat Balance</a></li>
-			
+					
 				</ul>
 			</div>
 		</nav>
@@ -152,12 +152,12 @@
 			}
 		</style>
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https:maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="https:ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+		<script src="https:maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="https:cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 	</head>
 	<body>
 		<div style = "display: flex; overflow: auto;width:90%;height:90%; margin-left: 40px; margin-top:60px">
@@ -383,7 +383,7 @@
 		<script>
             const xValues = [0,100];
                 
-            new Chart("myChart", {
+            new Chart(document.getElementById('myChart').getContext('2d'), {
             type: "line",
             data: {
                 labels: xValues,
@@ -455,11 +455,11 @@
 			    let DP1_C = Number(document.getElementById("DP1_C").value);
 			    let DP2_C = Number(document.getElementById("DP2_C").value);
 			    let ES1 = Number(document.getElementById("ES1").value);
-			    //ids only
+		
 			    let hlcheck1 = document.getElementById("HLcheck1");
 			    let hl1 = document.getElementById("HL1");
 			    let hl2 = document.getElementById("HL2");
-			   
+			    
 			    let frcheck1_h = document.getElementById("FRcheck1_H");
 			    let fr1_h = document.getElementById("FR1_H");
 			    
@@ -501,27 +501,106 @@
 			    let dp1_c = document.getElementById("DP1_C");
 			    let dp2_c = document.getElementById("DP2_C");
 			    let es1 = document.getElementById("ES1");
-			    //fucking unit conversions
-			    hl1.value = HL1 * HL2;
-			    fr1_h.value = FR1_H * FR2_H;
-			    fr1_c.value = FR1_C * FR2_C;
-			    it1_h.value = (IT1_H-IT2_H[1])*IT2_H[0];
-			    ot1_h.value = (OT1_H-OT2_H[1])*OT2_H[0];
-			    it1_c.value = (IT1_C-IT2_C[1])*IT2_C[0];
-			    ot1_c.value = (OT1_C-OT2_C[1])*OT2_C[0];
-			    HL1 = hl1.value;
-			    FR1_H = fr1_h.value;
-			    FR1_C = fr1_c.value;
-			    IT1_H = it1_h.value; 
-			    OT1_H = ot1_h.value; 
-			    IT1_H = it1_c.value; 
-			    OT1_C = ot1_c.value; 
+			   
+			    HL1 = HL1 * HL2;
+			    FR1_H = FR1_H * FR2_H;
+			    FR1_C = FR1_C * FR2_C;
+			    IT1_H = (IT1_H-IT2_H[1])*IT2_H[0];
+			    OT1_H = (OT1_H-OT2_H[1])*OT2_H[0];
+			    IT1_C = (IT1_C-IT2_C[1])*IT2_C[0];
+			    OT1_V = (OT1_C-OT2_C[1])*OT2_C[0];
+			    
 			    let SHC1_H = ((IT1_H+OT1_H)/2)*shc1_h.slope+shc1_h.intercept;
 			    let SHC1_C = ((IT1_C+OT1_C)/2)*shc1_c.slope+shc1_c.intercept;
-			    console.log("HLcheck1:", HLcheck1);
+			    
+			    console.log(HLcheck1 + FRcheck1_C + FRcheck1_H + ITcheck1_H + OTcheck1_H + ITcheck1_C + OTcheck1_C);
+			    
+			    if (HLcheck1 + FRcheck1_C + FRcheck1_H + ITcheck1_H + OTcheck1_H + ITcheck1_C + OTcheck1_C != 5) {
+			        window.alert("please input 5 variables");
+			        
+			    }
+			    if (FRcheck1_C + ITcheck1_C + OTcheck1_C+HLcheck1 == 4||FRcheck1_H + ITcheck1_H + OTcheck1_H+HLcheck1 == 4){
+			        window.alert("Please ensure you do not put 2 unknowns on either side");
+			        
+			    }
+				
+			    if (HLcheck1==0 && OTcheck1_H==0){
+			        shit(hl1,-FR1_C * (IT1_C - OT1_C) * SHC1_C);
+			        shit(ot1_h , ((FR1_C * (IT1_C - OT1_C) * SHC1_C + FR1_H * IT1_H * SHC1_H) / (FR1_H * SHC1_H)));
+			        
+			    } else if (HLcheck1==0 && OTcheck1_C==0){
+			        shit(hl1 , FR1_H*(IT1_H-OT1_H)*SHC1_H);
+			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+FR1_H*(IT1_H-OT1_H)*SHC1_H)/(FR1_C*SHC1_C)));
+			        
+			    } else if (HLcheck1==0 && ITcheck1_H==0){
+			        shit(hl1 , -(FR1_C*(IT1_C-OT1_C)*SHC1_C));
+			        shit(it1_h , ((-(FR1_C*(IT1_C-OT1_C)*SHC1_C-FR1_H*OT1_H*SHC1_H))/(FR1_H*SHC1_H)));
+			        
+			    } else if (HLcheck1==0 && ITcheck1_C==0){
+			        shit(hl1 , FR1_H*(IT1_H-OT1_H)*SHC1_H);
+			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-FR1_H*(IT1_H-OT1_H)*SHC1_H)/(FR1_C*SHC1_C)));
+			        
+			    } else if (HLcheck1==0 && FRcheck1_H==0){
+			        shit(hl1 , -FR1_C*(IT1_C-OT1_C)*SHC1_C);
+			        shit(fr1_h , -FR1_C * (IT1_C - OT1_C) * SHC1_C / ((IT1_H - OT1_H) * SHC1_H));
+					
+			        
+			    } else if (HLcheck1==0 && FRcheck1_C==0){
+			        shit(hl1 , FR1_H * (IT1_H - OT1_H) * SHC1_H);
+			        shit(fr1_c , FR1_H * (IT1_H - OT1_H) * SHC1_H / ((IT1_C - OT1_C) * SHC1_C));
+			        
+			    } else if (FRcheck1_H==0 && FRcheck1_C==0){
+			
+			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
+			        shit(fr1_h , HL1 /(abs(IT1_H - OT1_H) * SHC1_H));
+			        
+			    } else if (ITcheck1_H==0 && ITcheck1_C==0){
+			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-HL1)/(FR1_C*SHC1_C)));
+			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
+			        
+			    } else if (OTcheck1_H==0 && OTcheck1_C==0){
+			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
+			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
+			        
+			    } else if (ITcheck1_H==0 && OTcheck1_C==0){
+			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
+			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
+			        
+			    } else if (ITcheck1_C==0 && OTcheck1_H==0){
+			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-HL1)/(FR1_C*SHC1_C)));
+			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
+			        
+			    } else if (ITcheck1_C==0 && FRcheck1_H==0){
+			        shit(it1_c , OT1_C-(HL1/(FR1_C*SHC1_C)));
+			        shit(fr1_h , ((HL1)/((IT1_H-OT1_H)*SHC1_H)));
+			        
+			    } else if (OTcheck1_C==0 && FRcheck1_H==0){
+			        shit(fr1_h , ((HL1)/((IT1_H-OT1_H)*SHC1_H)));
+			        shit(ot1_c , IT1_C-(HL1/(FR1_C*SHC1_C)));
+			        
+			    } else if (ITcheck1_H==0 && FRcheck1_C==0){
+			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
+			        shit(it1_h , OT1_H-(HL1/(FR1_H*SHC1_H)));
+			        
+			    } else if (OTcheck1_H==0 && FRcheck1_C==0){
+			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
+			        shit(ot1_h , IT1_H-(HL1/(FR1_H*SHC1_H)));
+			    } else {
+					console.log("erm ,how did you get here?")
+				}
+			    HL1 = HL1 * HL2
+			    FR1_H = FR1_H * FR2_H
+			    FR1_C = FR1_C * FR2_C
+			    IT1_H = (IT1_H/IT2_H[0])-IT2_H[1]
+			    OT1_H = (OT1_H/OT2_H[0])-OT2_H[1]
+			    IT1_C = (IT1_C/IT2_C[0])-IT2_C[1]
+			    OT1_C = (OT1_C/OT2_C[0])-OT2_C[1]
+                const xValues = [0,100];
+				
+				console.log("HLcheck1:", HLcheck1);
 			    console.log("HL1:", HL1);
 			    console.log("HL2:", HL2);
-			
+			    
 			    console.log("SHC1_H:",SHC1_H)
 			    console.log("SHC1_C:",SHC1_C)
 			    console.log("FRcheck1_H:", FRcheck1_H);
@@ -541,7 +620,7 @@
 			    console.log("FF2_H:", FF2_H);
 			    console.log("DP1_H:", DP1_H);
 			    console.log("DP2_H:", DP2_H);
-			
+			 
 			    console.log("FRcheck1_C:", FRcheck1_C);
 			    console.log("FR1_C:", FR1_C);
 			    console.log("FR2_C:", FR2_C);
@@ -560,131 +639,29 @@
 			    console.log("DP1_C:", DP1_C);
 			    console.log("DP2_C:", DP2_C);
 			    console.log("ES1:", ES1);
-			    console.log("shc1_h slope:", shc1_h.slope);
-			    console.log("shc1_h intercept:", shc1_h.intercept);
-			    console.log(HLcheck1 + FRcheck1_C + FRcheck1_H + ITcheck1_H + OTcheck1_H + ITcheck1_C + OTcheck1_C);
-			    
-			    if (HLcheck1 + FRcheck1_C + FRcheck1_H + ITcheck1_H + OTcheck1_H + ITcheck1_C + OTcheck1_C != 5) {
-			        window.alert("please input 5 variables");
-			        return;
-			    }
-			    if (FRcheck1_C + ITcheck1_C + OTcheck1_C+HLcheck1 == 4||FRcheck1_H + ITcheck1_H + OTcheck1_H+HLcheck1 == 4){
-			        window.alert("Please ensure you do not put 2 unknowns on either side");
-			        return;
-			    }
-				//marker
-				//I am gonna pull my fucking hair out actually not I am going to pull my damn brain out at this point\
-				//the CAS helps 
-			    if (HLcheck1==0 && OTcheck1_H==0){
-			        shit(hl1,FR1_C * -FR1_C * (IT1_C - OT1_C) * SHC1_C);
-			        shit(ot1_h , ((FR1_C * (IT1_C - OT1_C) * SHC1_C + FR1_H * IT1_H * SHC1_H) / (FR1_H * SHC1_H)));
-			        return;
-			    }
-			
-			    if (HLcheck1==0 && OTcheck1_C==0){
-			        shit(hl1 , FR1_H*(IT1_H-OT1_H)*SHC1_H);
-			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+FR1_H*(IT1_H-OT1_H)*SHC1_H)/(FR1_C*SHC1_C)));
-			        return;
-			    }
+			    console.log("yes");
 				
-			    if (HLcheck1==0 && ITcheck1_H==0){
-			        shit(hl1 , -(FR1_C*(IT1_C-OT1_C)*SHC1_C));
-			        shit(it1_h , ((-(FR1_C*(IT1_C-OT1_C)*SHC1_C-FR1_H*OT1_H*SHC1_H))/(FR1_H*SHC1_H)));
-			        return;
-			    }
-				//marker
-			    if (HLcheck1==0 && ITcheck1_C==0){
-			        shit(hl1 , FR1_H*(IT1_H-OT1_H)*SHC1_H);
-			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-FR1_H*(IT1_H-OT1_H)*SHC1_H)/(FR1_C*SHC1_C)));
-			        return;
-			    }
-				//
-			    if (HLcheck1==0 && FRcheck1_H==0){
-			        shit(hl1 , -FR1_C*(IT1_C-OT1_C)*SHC1_C);
-			        shit(fr1_h , -FR1_C * (IT1_C - OT1_C) * SHC1_C / (IT1_H - OT1_H) * SHC1_H);
-					//        ((−FR1_C*(IT1_C-OT1_C)*SHC1_C)/((IT1_H-OT1_H)*SHC1_H))
-			        return;
-			    }
-				//
-			    if (HLcheck1==0 && FRcheck1_C==0){
-			        shit(hl1 , FR1_H * (IT1_H - OT1_H) * SHC1_H);
-			        shit(fr1_c , FR1_H * (IT1_H - OT1_H) * SHC1_H / (IT1_C - OT1_C) * SHC1_C);
-			        return;
-			    }
-				//
-			    if (FRcheck1_H==0 && FRcheck1_C==0){
-					//((−HL1)/((IT1_C-OT1_C)*SHC1_C)) 
-			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
-			        shit(fr1_h , HL1 /(abs(IT1_H - OT1_H) * SHC1_H));
-			        return;
-			    }
-			    if (ITcheck1_H==0 && ITcheck1_C==0){
-			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-HL1)/(FR1_C*SHC1_C)));
-			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
-			        return;
-			    }
-			    if (OTcheck1_H==0 && OTcheck1_C==0){
-			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
-			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
-			        return;
-			    }
-			    if (ITcheck1_H==0 && OTcheck1_C==0){
-			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
-			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
-			        return;
-			    }
-			    if (ITcheck1_C==0 && OTcheck1_H==0){
-			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C-HL1)/(FR1_C*SHC1_C)));
-			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
-			        return;
-			    }
-			    if (ITcheck1_C==0 && FRcheck1_H==0){
-			        shit(it1_c , ((FR1_C*OT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
-			        shit(fr1_h , ((HL1)/((IT1_H-OT1_H)*SHC1_H)));
-			        return;
-			    }
-			    if (OTcheck1_C==0 && FRcheck1_H==0){
-			        shit(fr1_h , ((HL1)/((IT1_H-OT1_H)*SHC1_H)));
-			        shit(ot1_c , ((FR1_C*IT1_C*SHC1_C+HL1)/(FR1_C*SHC1_C)));
-			        return;
-			    }
-			    if (ITcheck1_H==0 && FRcheck1_C==0){
-			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
-			        shit(it1_h , ((FR1_H*OT1_H*SHC1_H+HL1)/(FR1_H*SHC1_H)));
-			        return;
-			    }
-			    if (OTcheck1_H==0 && FRcheck1_C==0){
-			        shit(fr1_c , ((-HL1)/((IT1_C-OT1_C)*SHC1_C)));
-			        shit(ot1_h , ((FR1_H*IT1_H*SHC1_H-HL1)/(FR1_H*SHC1_H)));
-			        return;
-			    }
-			    hl1.value = HL1 * HL2
-			    fr1_h.value = FR1_H * FR2_H
-			    fr1_c.value = FR1_C * FR2_C
-			    it1_h.value = (IT1_H/IT2_H[0])-IT2_H[1]
-			    ot1_h.value = (OT1_H/OT2_H[0])-OT2_H[1]
-			    it1_h = (IT1_C/IT2_C[0])-IT2_C[1]
-			    ot1_h = (OT1_C/OT2_C[0])-OT2_C[1]
-                const xValues = [0,100];
+				
                 
-                new Chart("myChart", {
+                new Chart(document.getElementById('myChart').getContext('2d'), {
                 type: "line",
                 data: {
                     labels: xValues,
                     datasets: [{
-                        data: [document.getElementById("IT1_H").value,document.getElementById("OT1_H").value],
+                        data: [Number(document.getElementById("IT1_H").value),Number(document.getElementById("OT1_H").value)],
                         borderColor: "red",
                         fill: false
                     },{
-                        data: [document.getElementById("OT1_C").value,document.getElementById("IT1_C").value],
+                        data: [Number(document.getElementById("OT1_C").value),Number(document.getElementById("IT1_C").value)],
                         borderColor: "green",
                         fill: false
                     }]
                 },
                 options: {
-                    legend: {display: false}
-                }
+					legend: {display: false}
+				}
                 });
+				console.log('chart')
 			    
 			}
 			
