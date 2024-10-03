@@ -613,6 +613,7 @@
 
 <button onclick = "generaterange()" class = "button" style = "margin-left:20px;">generate range</button>
 <button id = "props" onclick = "load()" class = "button">Retrieve Properties</button>
+<button id = "props" onclick = "passkeys()" class = "button">Save properties</button>
 
 
 
@@ -882,6 +883,79 @@
         console.log(JSON.parse(sessionStorage.getItem("Deq1")))
         console.log(JSON.parse(sessionStorage.getItem("SHCeq2")))
         console.log(JSON.parse(sessionStorage.getItem("Deq2")))
+        const lineData = [
+          {x:Number(document.getElementById("T1").value), y:Number(document.getElementById("T1").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T2").value), y:Number(document.getElementById("T2").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T3").value), y:Number(document.getElementById("T3").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T4").value), y:Number(document.getElementById("T4").value)*SHCeq1.slope+SHCeq1.intercept},
+          {x:Number(document.getElementById("T5").value), y:Number(document.getElementById("T5").value)*SHCeq1.slope+SHCeq1.intercept},
+          
+        ];
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+
+        const xyValues = [
+          {x:document.getElementById("T1").value, y:document.getElementById("SHC1").value},
+          {x:document.getElementById("T2").value, y:document.getElementById("SHC2").value},
+          {x:document.getElementById("T3").value, y:document.getElementById("SHC3").value},
+          {x:document.getElementById("T4").value, y:document.getElementById("SHC4").value},
+          {x:document.getElementById("T5").value, y:document.getElementById("SHC5").value},
+        ];
+
+        new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    { label: 'SHC values', data: xyValues, backgroundColor: 'rgba(255, 99, 132, 1)' },
+                    { label: 'approximate trend', data: lineData, type: 'line', borderColor: 'rgba(54, 162, 235, 1)', fill: false }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { type: 'linear', position: 'bottom' },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+        const lineData2 = [
+          {x:Number(document.getElementById("T1").value), y:Number(document.getElementById("T1").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T2").value), y:Number(document.getElementById("T2").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T3").value), y:Number(document.getElementById("T3").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T4").value), y:Number(document.getElementById("T4").value)*SHCeq2.slope+SHCeq2.intercept},
+          {x:Number(document.getElementById("T5").value), y:Number(document.getElementById("T5").value)*SHCeq2.slope+SHCeq2.intercept},
+          
+        ];
+
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+
+
+        const xyValues2 = [
+          {x:document.getElementById("T1").value, y:document.getElementById("SHC12").value},
+          {x:document.getElementById("T2").value, y:document.getElementById("SHC22").value},
+          {x:document.getElementById("T3").value, y:document.getElementById("SHC32").value},
+          {x:document.getElementById("T4").value, y:document.getElementById("SHC42").value},
+          {x:document.getElementById("T5").value, y:document.getElementById("SHC52").value},
+        ];
+
+        new Chart(ctx2, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    { label: 'SHC values', data: xyValues2, backgroundColor: 'rgba(255, 99, 132, 1)' },
+                    { label: 'Approximate Trend', data: lineData2, type: 'line', borderColor: 'rgba(54, 162, 235, 1)', fill: false }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { type: 'linear', position: 'bottom' },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
         
      } 
      function linearRegression(x,y){
@@ -1029,79 +1103,7 @@
             
         `)
         passkeys()
-        const lineData = [
-          {x:Number(document.getElementById("T1").value), y:Number(document.getElementById("T1").value)*SHCeq1.slope+SHCeq1.intercept},
-          {x:Number(document.getElementById("T2").value), y:Number(document.getElementById("T2").value)*SHCeq1.slope+SHCeq1.intercept},
-          {x:Number(document.getElementById("T3").value), y:Number(document.getElementById("T3").value)*SHCeq1.slope+SHCeq1.intercept},
-          {x:Number(document.getElementById("T4").value), y:Number(document.getElementById("T4").value)*SHCeq1.slope+SHCeq1.intercept},
-          {x:Number(document.getElementById("T5").value), y:Number(document.getElementById("T5").value)*SHCeq1.slope+SHCeq1.intercept},
-          
-        ];
-
-        const ctx = document.getElementById('myChart').getContext('2d');
-
-
-        const xyValues = [
-          {x:document.getElementById("T1").value, y:document.getElementById("SHC1").value},
-          {x:document.getElementById("T2").value, y:document.getElementById("SHC2").value},
-          {x:document.getElementById("T3").value, y:document.getElementById("SHC3").value},
-          {x:document.getElementById("T4").value, y:document.getElementById("SHC4").value},
-          {x:document.getElementById("T5").value, y:document.getElementById("SHC5").value},
-        ];
-
-        new Chart(ctx, {
-            type: 'scatter',
-            data: {
-                datasets: [
-                    { label: 'SHC values', data: xyValues, backgroundColor: 'rgba(255, 99, 132, 1)' },
-                    { label: 'approximate trend', data: lineData, type: 'line', borderColor: 'rgba(54, 162, 235, 1)', fill: false }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: { type: 'linear', position: 'bottom' },
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-        const lineData2 = [
-          {x:Number(document.getElementById("T1").value), y:Number(document.getElementById("T1").value)*SHCeq2.slope+SHCeq2.intercept},
-          {x:Number(document.getElementById("T2").value), y:Number(document.getElementById("T2").value)*SHCeq2.slope+SHCeq2.intercept},
-          {x:Number(document.getElementById("T3").value), y:Number(document.getElementById("T3").value)*SHCeq2.slope+SHCeq2.intercept},
-          {x:Number(document.getElementById("T4").value), y:Number(document.getElementById("T4").value)*SHCeq2.slope+SHCeq2.intercept},
-          {x:Number(document.getElementById("T5").value), y:Number(document.getElementById("T5").value)*SHCeq2.slope+SHCeq2.intercept},
-          
-        ];
-
-        const ctx2 = document.getElementById('myChart2').getContext('2d');
-
-
-        const xyValues2 = [
-          {x:document.getElementById("T1").value, y:document.getElementById("SHC12").value},
-          {x:document.getElementById("T2").value, y:document.getElementById("SHC22").value},
-          {x:document.getElementById("T3").value, y:document.getElementById("SHC32").value},
-          {x:document.getElementById("T4").value, y:document.getElementById("SHC42").value},
-          {x:document.getElementById("T5").value, y:document.getElementById("SHC52").value},
-        ];
-
-        new Chart(ctx2, {
-            type: 'scatter',
-            data: {
-                datasets: [
-                    { label: 'SHC values', data: xyValues2, backgroundColor: 'rgba(255, 99, 132, 1)' },
-                    { label: 'Approximate Trend', data: lineData2, type: 'line', borderColor: 'rgba(54, 162, 235, 1)', fill: false }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: { type: 'linear', position: 'bottom' },
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-
+        
 
     }
     
